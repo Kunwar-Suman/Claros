@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import Home from './components/Home';
+import UserTable from './components/UserTable';
 
 type View = 'home' | 'data';
 
@@ -28,11 +29,7 @@ function App() {
         
         <main className="flex-1 overflow-auto p-6">
           {activeView === 'home' && <Home />}
-          {activeView === 'data' && (
-            <div className="bg-white rounded-lg shadow p-6">
-              <p className="text-gray-600">Data table coming soon...</p>
-            </div>
-          )}
+          {activeView === 'data' && <UserTable />}
         </main>
       </div>
     </div>
