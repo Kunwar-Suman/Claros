@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 interface SidebarProps {
-  activeView: 'home' | 'data';
-  onViewChange: (view: 'home' | 'data') => void;
+  activeView: 'home' | 'data' | 'analytics' | 'settings';
+  onViewChange: (view: 'home' | 'data' | 'analytics' | 'settings') => void;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ activeView, onViewChange }) => {
@@ -11,6 +11,8 @@ const Sidebar: React.FC<SidebarProps> = ({ activeView, onViewChange }) => {
   const menuItems = [
     { id: 'home' as const, label: 'Home', icon: '🏠' },
     { id: 'data' as const, label: 'Data', icon: '📊' },
+    { id: 'analytics' as const, label: 'Analytics', icon: '📈' },
+    { id: 'settings' as const, label: 'Settings', icon: '⚙️' },
   ];
 
   return (
