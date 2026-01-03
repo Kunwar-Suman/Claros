@@ -3,6 +3,8 @@ import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { fetchUsers, setSearchQuery, setCurrentPage } from '../features/usersSlice';
 import SearchBar from './SearchBar';
 import Pagination from './Pagination';
+import LoadingSkeleton from './LoadingSkeleton';
+import ErrorMessage from './ErrorMessage';
 import { User } from '../types/user.types';
 
 const UserTable: React.FC = () => {
@@ -35,38 +37,11 @@ const UserTable: React.FC = () => {
   const currentUsers = filteredUsers.slice(startIndex, endIndex);
 
   if (loading) {
-    return (
-      <div className="bg-white rounded-lg shadow p-6">
-        <div className="flex items-center justify-center h-64">
-          <div className="flex flex-col items-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
-            <p className="mt-4 text-gray-600">Loading users...</p>
-          </div>
-        </div>
-      </div>
-    );
+    return <LoadingSkeleton />;
   }
 
   if (error) {
-    return (
-      <div className="bg-white rounded-lg shadow p-6">
-        <div className="flex items-center justify-center h-64">
-          <div className="text-center">
-            <div className="text-6xl mb-4">⚠️</div>
-            <h3 className="text-lg font-semibold text-gray-800 mb-2">
-              Oops! Something went wrong
-            </h3>
-            <p className="text-gray-600 mb-4">{error}</p>
-            <button
-              onClick={() => dispatch(fetchUsers())}
-              className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors"
-            >
-              Try Again
-            </button>
-          </div>
-        </div>
-      </div>
-    );
+    return <ErrorMessage message={error} onRetry={() => dispatch(fetchUsers())} />;
   }
 
   return (
