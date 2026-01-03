@@ -1,6 +1,7 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { User, UsersState } from '../types/user.types';
+import type { User, UsersState } from '../types/user.types';
 
 const API_URL = 'https://jsonplaceholder.typicode.com/users';
 

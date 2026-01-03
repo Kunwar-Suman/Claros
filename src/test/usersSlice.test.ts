@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import usersReducer, { setSearchQuery, setCurrentPage } from '../features/usersSlice';
-import { UsersState } from '../types/user.types';
+import type { UsersState } from '../types/user.types';
 
 const initialState: UsersState = {
   users: [

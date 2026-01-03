@@ -5,7 +5,7 @@ import SearchBar from './SearchBar';
 import Pagination from './Pagination';
 import LoadingSkeleton from './LoadingSkeleton';
 import ErrorMessage from './ErrorMessage';
-import { User } from '../types/user.types';
+import type { User } from '../types/user.types';
 
 const UserTable: React.FC = () => {
   const dispatch = useAppDispatch();
